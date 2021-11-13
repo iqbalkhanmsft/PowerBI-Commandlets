@@ -1,0 +1,10 @@
+-- Documentation Link: https://powerbi.microsoft.com/en-us/blog/workspace-management-in-the-admin-portal/
+
+Login-PowerBIServiceAccount
+
+-- Type: 
+-- PersonalGroup – A personal workspace of a Power BI user
+-- Group: A legacy workspace based on Office 365 groups
+-- Workspace: A modern workspace
+
+Get-PowerBIWorkspace -All
