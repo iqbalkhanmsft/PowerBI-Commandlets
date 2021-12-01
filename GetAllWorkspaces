@@ -8,4 +8,4 @@ Login-PowerBIServiceAccount
 -- Group: A legacy workspace based on Office 365 groups
 -- Workspace: A modern workspace
 
-Get-PowerBIWorkspace -All
+Get-PowerBIWorkspace -All -Scope Organization
