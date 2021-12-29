@@ -1,0 +1,16 @@
+#Login into Power BI.
+Login-PowerBIServiceAccount
+
+#Get all workspaces.
+Get-PowerBIWorkspace -Scope Organization -Include All -All  | 
+
+#For each workspace name and ID, get user identifier and access type; export to file.
+ForEach-Object {
+$Workspace = $_.name
+$WorkspaceId = $_.Id
+foreach ($User in $_.Users) {
+[PSCustomObject]@{
+Workspace = $Workspace
+WorkspaceId = $WorkspaceId
+User = $User.accessright    
+Identifier   =$user.Identifier}}} | Export-CSV "C:\Temp\WorkspaceDetails.csv" -NoTypeInformation
