@@ -1,0 +1,15 @@
+#Make sure to run Powershell ISE in Administrator format.
+#Also run while authenticated as a Power BI service admin.
+
+#Set location to filepath of script contents.
+#Change as necessary.
+Set-Location -Path "C:\Users\iqbalkhan.NORTHAMERICA\OneDrive - Microsoft\Desktop\PS Scripts"
+
+#Install modules as necessary. Comment out if modules are already installed.
+Install-Module -Name MicrosoftPowerBIMgmt
+Install-Module -Name AzureAD
+
+#Run assessment.
+.\Run-PowerBIAssessment.ps1 -config default.config -skipmoduleinstallation
+
+#For script prompts: "Run Once".
