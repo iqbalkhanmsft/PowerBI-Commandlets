@@ -11,4 +11,4 @@ Set-ExecutionPolicy RemoteSigned
 Connect-ExchangeOnline -UserPrincipalName admin@powerbidawgs.com
 
 # Search log for Power BI records and export to file.
-Search-UnifiedAuditLog -StartDate 12/01/2021 -EndDate 12/22/2021 -RecordType PowerBIAudit -ResultSize 1000 | Export-Csv -Path "c:\temp\PowerBIAuditLog.csv" -NoTypeInformation 
+Search-UnifiedAuditLog -StartDate 12/01/2021 -EndDate 12/22/2021 -RecordType PowerBIAudit -ResultSize 5000 | Export-Csv -Path "c:\temp\PowerBIAuditLog.csv" -NoTypeInformation 
