@@ -1,11 +1,10 @@
 -- PLEASE NOTE ALL CODE IS FOR TESTING PURPOSES ONLY AND NOT TO BE USED IN PRODUCTION.
 -- Documentation Link: https://powerbi.microsoft.com/en-us/blog/workspace-management-in-the-admin-portal/
-
 Login-PowerBIServiceAccount
 
--- Type: 
--- PersonalGroup – A personal workspace of a Power BI user
--- Group: A legacy workspace based on Office 365 groups
--- Workspace: A modern workspace
+# Type: 
+# PersonalGroup – A personal workspace of a Power BI user
+# Group: A legacy workspace based on Office 365 groups
+# Workspace: A modern workspace
 
-Get-PowerBIWorkspace -All -Scope Organization
+Get-PowerBIWorkspace -All -Scope Organization | Select Id, Name, IsReadOnly, IsOnDedicatedCapacity, CapacityId, Description, Type, State, IsOrphaned | Export-CSV "C:\Temp\WorkspacesList.csv" -NoTypeInformation
