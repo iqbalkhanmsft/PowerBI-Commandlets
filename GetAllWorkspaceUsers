@@ -13,4 +13,4 @@ foreach ($User in $_.Users) {
 Workspace = $Workspace
 WorkspaceId = $WorkspaceId
 User = $User.accessright    
-Identifier   =$user.Identifier}}} | Export-CSV "C:\Temp\WorkspaceDetails.csv" -NoTypeInformation
+Identifier   =$user.Identifier}}} | Export-CSV "C:\Temp\WorkspaceUsers.csv" -NoTypeInformation
