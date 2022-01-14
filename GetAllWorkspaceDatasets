@@ -1,7 +1,6 @@
 #Login to Power BI.
 Login-PowerBIServiceAccount
 
-
 #Variable to save the IDs of all Power BI workspaces.
 $Workspace = Get-PowerBIWorkspace -All
 
@@ -24,7 +23,7 @@ ForEach ($workspace in $Workspace)
     }
 
 #Defines the directory and name of the file to be exported to a CSV file.
-$Dir = "C:\Temp\WorkspaceDataExport.csv"
+$Dir = "C:\Temp\WorkspaceDatasets.csv"
 
 #Exports the script result to a CSV file within the directory established above.
 $DataSets | Export-Csv $Dir -NoTypeInformation -Encoding UTF8
