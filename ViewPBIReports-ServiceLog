@@ -8,4 +8,4 @@ $activities.Count
 $activities[0]
 
 #Change file name here.
-$activities | Export-Csv "C:\Temp\ViewPBIReports-ServiceLog.csv"
+$activities | Export-Csv "C:\Temp\ViewPBIReports-ServiceLog.csv" -NoTypeInformation
