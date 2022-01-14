@@ -1,0 +1,32 @@
+#Login to Power BI.
+Login-PowerBIServiceAccount
+
+#Variable to save the IDs of all Power BI workspaces.
+$Workspaces = Get-PowerBIWorkspace -All
+
+# Loop for each workspace ID and each underlying report, return data.
+$Reports =
+ForEach ($workspace in $Workspaces)
+    {
+    Write-Host $workspace.Name
+    ForEach ($report in (Get-PowerBIReport -Scope Organization -WorkspaceId $workspace.Id))
+        {
+        [pscustomobject]@{
+            WorkspaceName = $workspace.Name 
+            WorkspaceID = $workspace.Id
+            ReportId = $report.Id
+            ReportName = $report.Name
+            ReportDatasetID = $report.DatasetId
+            ReportURL = $report.WebUrl
+            }
+        }
+    }
+
+#Defines the directory and name of the file to be exported to a CSV file.
+$Dir = "C:\Temp\WorkspaceReports.csv"
+
+#Exports the script result to a CSV file within the directory established above.
+$Reports | Export-Csv $Dir -NoTypeInformation -Encoding UTF8
+
+#Disconnect account.
+Disconnect-PowerBIServiceAccount
