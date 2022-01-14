@@ -1,0 +1,15 @@
+#Install Exchange Module
+Install-Module -Name ExchangeOnlineManagement -RequiredVersion 2.0.5 -Scope CurrentUser
+
+#Import Exchange Module
+Import-Module ExchangeOnlineManagement
+
+#Set policy to allow scripts to be run.
+Set-ExecutionPolicy RemoteSigned
+
+#Connect to Exchange using Admin account.
+Connect-ExchangeOnline -UserPrincipalName admin@powerbidawgs.com
+
+#Search log for Power BI records and export to file.
+#Possible activities: https://docs.microsoft.com/en-us/power-bi/admin/service-admin-auditing#operations-available-in-the-audit-and-activity-logs
+Search-UnifiedAuditLog -StartDate 12/01/2021 -EndDate 12/22/2021 -Operations ViewReport -RecordType PowerBIAudit -ResultSize 5000 | Export-Csv -Path "C:\Temp\ViewPBIReports-AuditLog.csv" -NoTypeInformation 
