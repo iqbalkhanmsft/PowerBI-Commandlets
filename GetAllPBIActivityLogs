@@ -1,0 +1,12 @@
+Connect-PowerBIServiceAccount
+
+30..1 |
+foreach {
+    $Date = (((Get-Date).Date).AddDays(-$_))
+    "$Date"
+    $StartDate = (Get-Date -Date ($Date) -Format yyyy-MM-ddTHH:mm:ss)
+    $EndDate = (Get-Date -Date ((($Date).AddDays(1)).AddMilliseconds(-1)) -Format yyyy-MM-ddTHH:mm:ss)
+    
+    Get-PowerBIActivityEvent -StartDateTime $StartDate -EndDateTime $EndDate -ActivityType CreateFolder -ResultType JsonString | 
+    Out-File -FilePath C:\Temp\WorkspaceCreatedLog.json -Append
+}
