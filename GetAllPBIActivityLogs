@@ -1,5 +1,10 @@
+#Install Power BI PS Module.
+Install-Module -Name MicrosoftPowerBIMgmt
+
+#Login using PBI admin account.
 Connect-PowerBIServiceAccount
 
+#Script to extract data for last 30 days.
 30..1 |
 foreach {
     $Date = (((Get-Date).Date).AddDays(-$_))
